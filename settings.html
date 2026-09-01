@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Account Settings</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f5f5f5;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(240,185,11,0.12),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(240,185,11,0.06),
+      transparent 32%
+    ),
+    #0b0e11;
+}
+
+body::before {
+  content: "₿";
+  position: fixed;
+  right: -80px;
+  bottom: -100px;
+  font-size: 240px;
+  font-weight: bold;
+  color: rgba(240,185,11,0.035);
+  z-index: -1;
+}
+
+/* HEADER */
+
+.header {
+  background: #181a20;
+  border-bottom: 1px solid #2b2f36;
+  padding: 16px 20px;
+}
+
+.header-inner {
+  max-width: 950px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: #f0b90b;
+  color: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.brand-name {
+  color: #f0b90b;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.brand-subtitle {
+  color: #848e9c;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.dashboard {
+  background: #f0b90b;
+  color: #111111;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.dashboard:hover {
+  background: #f8d33a;
+}
+
+/* MAIN */
+
+.container {
+  max-width: 700px;
+  margin: 55px auto;
+  padding: 20px;
+}
+
+.card {
+  background: #181a20;
+  border: 1px solid #2b2f36;
+  border-radius: 14px;
+  padding: 32px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+}
+
+h1 {
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  color: #9ca3af;
+  margin-bottom: 30px;
+}
+
+/* SETTINGS BOX */
+
+.setting-box {
+  background: #20232a;
+  border: 1px solid #2b2f36;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.setting-box h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.setting-box p {
+  color: #9ca3af;
+  line-height: 1.5;
+  margin: 0 0 15px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-top: 1px solid #2b2f36;
+}
+
+.info-label {
+  color: #848e9c;
+}
+
+.info-value {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* BUTTON */
+
+.btn {
+  display: inline-block;
+  background: #f0b90b;
+  color: #111111;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #f8d33a;
+}
+
+/* PASSWORD FORM */
+
+.password-form {
+  display: none;
+  margin-top: 18px;
+}
+
+input {
+  width: 100%;
+  padding: 13px;
+  margin: 8px 0;
+  background: #181a20;
+  color: #ffffff;
+  border: 1px solid #3a3f47;
+  border-radius: 7px;
+  font-size: 15px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #f0b90b;
+}
+
+.message {
+  display: none;
+  margin-top: 15px;
+  padding: 13px;
+  border-radius: 7px;
+  background: rgba(14,203,129,0.08);
+  border: 1px solid rgba(14,203,129,0.2);
+  color: #0ecb81;
+}
+
+/* NOTICE */
+
+.notice {
+  margin-top: 25px;
+  padding-top: 18px;
+  border-top: 1px solid #2b2f36;
+  text-align: center;
+  color: #848e9c;
+  font-size: 13px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+  .container {
+    margin: 30px auto;
+    padding: 15px;
+  }
+
+  .card {
+    padding: 25px 18px;
+  }
+
+  .brand-name {
+    font-size: 17px;
+  }
+
+  .info-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+  <div class="header-inner">
+
+    <div class="brand">
+
+      <div class="logo">
+        ₿
+      </div>
+
+      <div>
+
+        <div class="brand-name">
+          Account Settings
+        </div>
+
+        <div class="brand-subtitle">
+          Account
+        </div>
+
+      </div>
+
+    </div>
+
+    <button
+      class="dashboard"
+      onclick="location.href='index.html'">
+
+      Dashboard
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- MAIN -->
+
+<div class="container">
+
+  <div class="card">
+
+    <h1>
+      Settings
+    </h1>
+
+    <div class="subtitle">
+      Manage your account information
+    </div>
+
+
+    <!-- ACCOUNT INFORMATION -->
+
+    <div class="setting-box">
+
+      <h2>
+        Account Information
+      </h2>
+
+      <p>
+        View your account profile information.
+      </p>
+
+
+      <div class="info-row">
+
+        <span class="info-label">
+          Account Holder
+        </span>
+
+        <span class="info-value">
+          Betina Guter
+        </span>
+
+      </div>
+
+
+      <div class="info-row">
+
+        <span class="info-label">
+          Account Status
+        </span>
+
+        <span class="info-value">
+          Active
+        </span>
+
+      </div>
+
+      <br>
+
+      <a
+        class="btn"
+        href="profile.html">
+
+        View Profile
+
+      </a>
+
+    </div>
+
+
+    <!-- CHANGE PASSWORD -->
+
+    <div class="setting-box">
+
+      <h2>
+        Change Password
+      </h2>
+
+      <p>
+        Update your account password.
+      </p>
+
+
+      <button
+        class="btn"
+        onclick="showPasswordForm()">
+
+        Change Password
+
+      </button>
+
+
+      <div
+        class="password-form"
+        id="passwordForm">
+
+
+        <input
+          type="password"
+          id="currentPassword"
+          placeholder="Current password"
+        >
+
+
+        <input
+          type="password"
+          id="newPassword"
+          placeholder="New password"
+        >
+
+
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirm new password"
+        >
+
+
+        <button
+          class="btn"
+          onclick="changePassword()">
+
+          Save New Password
+
+        </button>
+
+
+        <div
+          class="message"
+          id="message">
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- ACCOUNT STATUS -->
+
+    <div class="setting-box">
+
+      <h2>
+        Account Status
+      </h2>
+
+      <p>
+        Your current account status is Active.
+      </p>
+
+    </div>
+
+
+    <!-- SIMULATION NOTICE -->
+
+    <div class="notice">
+      account interface.
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<script>
+
+function showPasswordForm() {
+
+  document
+    .getElementById("passwordForm")
+    .style.display = "block";
+
+}
+
+
+function changePassword() {
+
+  const current =
+    document
+      .getElementById("currentPassword")
+      .value;
+
+  const newPassword =
+    document
+      .getElementById("newPassword")
+      .value;
+
+  const confirm =
+    document
+      .getElementById("confirmPassword")
+      .value;
+
+  const message =
+    document
+      .getElementById("message");
+
+
+  if (
+    !current ||
+    !newPassword ||
+    !confirm
+  ) {
+
+    message.style.display = "block";
+
+    message.style.color = "#ff7070";
+
+    message.innerHTML =
+      "Please complete all password fields.";
+
+    return;
+
+  }
+
+
+  if (
+    newPassword !== confirm
+  ) {
+
+    message.style.display = "block";
+
+    message.style.color = "#ff7070";
+
+    message.innerHTML =
+      "New passwords do not match.";
+
+    return;
+
+  }
+
+
+  if (
+    newPassword.length < 6
+  ) {
+
+    message.style.display = "block";
+
+    message.style.color = "#ff7070";
+
+    message.innerHTML =
+      "Your new password must contain at least 6 characters.";
+
+    return;
+
+  }
+
+
+  localStorage.setItem(
+    "AccountPassword",
+    newPassword
+  );
+
+
+  message.style.display = "block";
+
+  message.style.color = "#0ecb81";
+
+  message.innerHTML =
+    "Password updated successfully.";
+
+
+  document
+    .getElementById("currentPassword")
+    .value = "";
+
+
+  document
+    .getElementById("newPassword")
+    .value = "";
+
+
+  document
+    .getElementById("confirmPassword")
+    .value = "";
+
+}
+
+</script>
+
+</body>
+</html>
+```

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Deposit Unavailable</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f5f5f5;
+
+  background:
+    radial-gradient(circle at 80% 10%, rgba(240,185,11,0.12), transparent 32%),
+    radial-gradient(circle at 10% 90%, rgba(240,185,11,0.06), transparent 32%),
+    #0b0e11;
+}
+
+body::before {
+  content: "₿";
+  position: fixed;
+  right: -80px;
+  bottom: -100px;
+  font-size: 260px;
+  font-weight: bold;
+  color: rgba(240,185,11,0.035);
+  z-index: -1;
+}
+
+.header {
+  background: #181a20;
+  border-bottom: 1px solid #2b2f36;
+  padding: 16px 20px;
+}
+
+.header-inner {
+  max-width: 850px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: #f0b90b;
+  color: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.brand-name {
+  color: #f0b90b;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.brand-subtitle {
+  color: #848e9c;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.dashboard {
+  background: #f0b90b;
+  color: #111111;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.dashboard:hover {
+  background: #f8d33a;
+}
+
+.container {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.card {
+  background: #181a20;
+  border: 1px solid #2b2f36;
+  padding: 35px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+}
+
+.lock-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: rgba(240,185,11,0.12);
+  border: 1px solid rgba(240,185,11,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+}
+
+h1 {
+  margin: 0 0 12px;
+  color: #ffffff;
+}
+
+.description {
+  color: #9ca3af;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.lock-box {
+  background: #20232a;
+  border: 1px solid #2b2f36;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.lock-box h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #f0b90b;
+}
+
+.lock-box p {
+  margin: 0;
+  color: #d1d5db;
+  line-height: 1.5;
+}
+
+.back-btn {
+  display: inline-block;
+  background: #f0b90b;
+  color: #111111;
+  padding: 13px 22px;
+  border-radius: 7px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-btn:hover {
+  background: #f8d33a;
+}
+
+.notice {
+  margin-top: 25px;
+  padding-top: 18px;
+  border-top: 1px solid #2b2f36;
+  color: #848e9c;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media(max-width:600px) {
+  .container {
+    margin: 35px auto;
+  }
+
+  .card {
+    padding: 30px 20px;
+  }
+
+  .brand-name {
+    font-size: 17px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+  <div class="header-inner">
+
+    <div class="brand">
+
+      <div class="logo">₿</div>
+
+      <div>
+        <div class="brand-name">
+          Deposit
+        </div>
+
+        <div class="brand-subtitle">
+        Account
+        </div>
+      </div>
+
+    </div>
+
+    <button
+      class="dashboard"
+      onclick="location.href='index.html'">
+      Dashboard
+    </button>
+
+  </div>
+
+</div>
+
+
+<div class="container">
+
+  <div class="card">
+
+    <div class="lock-icon">
+      🔒
+    </div>
+
+    <h1>
+      Deposit Unavailable
+    </h1>
+
+    <p class="description">
+      The deposit feature is currently locked for this account.
+    </p>
+
+    <div class="lock-box">
+
+      <h2>
+        Deposit Feature Locked
+      </h2>
+
+      <p>
+      process deposits or real payments.
+      </p>
+
+    </div>
+
+    <a
+      class="back-btn"
+      href="index.html">
+      ← Return to Dashboard
+    </a>
+
+    <div class="notice">
+    account.
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
+```

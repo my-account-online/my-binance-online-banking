@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Your Binance Profile</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f5f5f5;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(240,185,11,0.12),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(240,185,11,0.06),
+      transparent 32%
+    ),
+    #0b0e11;
+}
+
+body::before {
+  content: "₿";
+  position: fixed;
+  right: -80px;
+  bottom: -100px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 240px;
+  font-weight: bold;
+  color: rgba(240,185,11,0.035);
+  border: 1px solid rgba(240,185,11,0.07);
+  z-index: -1;
+}
+
+
+/* HEADER */
+
+.header {
+  background: #181a20;
+  border-bottom: 1px solid #2b2f36;
+  padding: 16px 20px;
+}
+
+.header-inner {
+  max-width: 950px;
+  margin: auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 10px;
+
+  background: #f0b90b;
+  color: #111111;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.brand-name {
+  color: #f0b90b;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.brand-subtitle {
+  color: #848e9c;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.dashboard {
+  background: #f0b90b;
+  color: #111111;
+
+  border: none;
+
+  padding: 10px 16px;
+
+  border-radius: 6px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.dashboard:hover {
+  background: #f8d33a;
+}
+
+
+/* MAIN */
+
+.container {
+  max-width: 700px;
+
+  margin: 55px auto;
+
+  padding: 20px;
+}
+
+.card {
+  background: #181a20;
+
+  border: 1px solid #2b2f36;
+
+  border-radius: 14px;
+
+  padding: 32px;
+
+  box-shadow:
+    0 12px 35px rgba(0,0,0,0.35);
+}
+
+
+/* PROFILE ICON */
+
+.profile-icon {
+  width: 75px;
+  height: 75px;
+
+  margin: 0 auto 20px;
+
+  border-radius: 50%;
+
+  background: #20232a;
+
+  border: 2px solid #f0b90b;
+
+  color: #f0b90b;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 34px;
+
+  font-weight: bold;
+}
+
+
+/* TITLE */
+
+h1 {
+  text-align: center;
+
+  margin: 0 0 8px;
+
+  color: #ffffff;
+
+  font-size: 28px;
+}
+
+.subtitle {
+  text-align: center;
+
+  color: #9ca3af;
+
+  margin-bottom: 30px;
+}
+
+
+/* PROFILE INFORMATION */
+
+.profile-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.profile-item {
+  background: #20232a;
+
+  border: 1px solid #2b2f36;
+
+  border-radius: 9px;
+
+  padding: 17px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+.label {
+  color: #848e9c;
+
+  font-size: 13px;
+}
+
+.value {
+  color: #ffffff;
+
+  font-size: 15px;
+
+  font-weight: bold;
+
+  text-align: right;
+}
+
+
+/* STATUS */
+
+.active {
+  color: #0ecb81;
+}
+
+
+/* SETTINGS BUTTON */
+
+.settings {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 25px;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: #f0b90b;
+
+  color: #111111;
+
+  font-size: 15px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  text-align: center;
+
+  text-decoration: none;
+}
+
+.settings:hover {
+  background: #f8d33a;
+}
+
+
+/* NOTICE */
+
+.notice {
+  margin-top: 25px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid #2b2f36;
+
+  text-align: center;
+
+  color: #848e9c;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+  .container {
+    margin: 30px auto;
+
+    padding: 15px;
+  }
+
+  .card {
+    padding: 25px 18px;
+  }
+
+  .profile-item {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 7px;
+  }
+
+  .value {
+    text-align: left;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .brand-name {
+    font-size: 17px;
+  }
+
+  .logo {
+    width: 38px;
+    height: 38px;
+
+    font-size: 25px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+  <div class="header-inner">
+
+    <div class="brand">
+
+      <div class="logo">
+        ₿
+      </div>
+
+      <div>
+
+        <div class="brand-name">
+          Your Binance Profile
+        </div>
+
+        <div class="brand-subtitle">
+          Account
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="dashboard"
+      onclick="location.href='index.html'">
+
+      Dashboard
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- MAIN -->
+
+<div class="container">
+
+  <div class="card">
+
+
+    <div class="profile-icon">
+      B
+    </div>
+
+
+    <h1>
+      Profile
+    </h1>
+
+
+    <div class="subtitle">
+      Account information
+    </div>
+
+
+    <div class="profile-list">
+
+
+      <div class="profile-item">
+
+        <div class="label">
+          Account Holder
+        </div>
+
+        <div class="value">
+          Betina Guter
+        </div>
+
+      </div>
+
+
+      <div class="profile-item">
+
+        <div class="label">
+          Customer Username
+        </div>
+
+        <div class="value">
+          Betina Guter
+        </div>
+
+      </div>
+
+
+      <div class="profile-item">
+
+        <div class="label">
+          Account Status
+        </div>
+
+        <div class="value active">
+          Active
+        </div>
+
+      </div>
+
+
+      <div class="profile-item">
+
+        <div class="label">
+          Account Type
+        </div>
+
+        <div class="value">
+          Binance Account
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <a
+      class="settings"
+      href="settings.html">
+
+      Open Settings
+
+    </a>
+
+
+    <div class="notice">
+
+    account.
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+</body>
+</html>
+```

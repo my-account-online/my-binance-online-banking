@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BTC Transfer Online Banking</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f5f5f5;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(240,185,11,0.12),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(240,185,11,0.06),
+      transparent 32%
+    ),
+    #0b0e11;
+}
+
+/* BTC BACKGROUND */
+
+body::before {
+  content: "₿";
+
+  position: fixed;
+
+  right: -80px;
+  bottom: -100px;
+
+  width: 360px;
+  height: 360px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 240px;
+  font-weight: bold;
+
+  color: rgba(240,185,11,0.035);
+
+  border: 1px solid rgba(240,185,11,0.07);
+
+  z-index: -1;
+}
+
+
+/* HEADER */
+
+.header {
+  background: #181a20;
+
+  border-bottom: 1px solid #2b2f36;
+
+  padding: 16px 20px;
+}
+
+.header-inner {
+  max-width: 950px;
+
+  margin: auto;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+
+/* BRAND */
+
+.brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 10px;
+
+  background: #f0b90b;
+
+  color: #111111;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+
+  font-weight: bold;
+
+  box-shadow:
+    0 4px 15px rgba(240,185,11,0.16);
+}
+
+.brand-name {
+  color: #f0b90b;
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+  line-height: 1.2;
+}
+
+.brand-subtitle {
+  color: #848e9c;
+
+  font-size: 11px;
+
+  margin-top: 3px;
+}
+
+
+/* DASHBOARD */
+
+.dashboard {
+  background: #f0b90b;
+
+  color: #111111;
+
+  border: none;
+
+  padding: 10px 16px;
+
+  border-radius: 6px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.dashboard:hover {
+  background: #f8d33a;
+}
+
+
+/* MAIN */
+
+.container {
+  max-width: 650px;
+
+  margin: 60px auto;
+
+  padding: 20px;
+}
+
+
+/* CARD */
+
+.card {
+  background: #181a20;
+
+  border: 1px solid #2b2f36;
+
+  border-radius: 14px;
+
+  padding: 35px;
+
+  text-align: center;
+
+  box-shadow:
+    0 12px 35px rgba(0,0,0,0.35);
+}
+
+
+/* ICON */
+
+.transfer-icon {
+  width: 70px;
+  height: 70px;
+
+  margin: 0 auto 20px;
+
+  border-radius: 50%;
+
+  background: rgba(240,185,11,0.10);
+
+  border: 1px solid rgba(240,185,11,0.25);
+
+  color: #f0b90b;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 32px;
+}
+
+
+/* TITLE */
+
+h1 {
+  margin: 0 0 12px;
+
+  color: #ffffff;
+
+  font-size: 28px;
+}
+
+.description {
+  color: #9ca3af;
+
+  line-height: 1.6;
+
+  margin-bottom: 28px;
+}
+
+
+/* FEE */
+
+.fee-box {
+  background: #20232a;
+
+  border: 1px solid #3a3f47;
+
+  border-radius: 10px;
+
+  padding: 22px;
+
+  margin-bottom: 20px;
+}
+
+.fee-title {
+  color: #9ca3af;
+
+  font-size: 14px;
+
+  margin-bottom: 8px;
+}
+
+.fee {
+  color: #f0b90b;
+
+  font-size: 32px;
+
+  font-weight: bold;
+}
+
+
+/* STATUS */
+
+.status {
+  background: rgba(240,185,11,0.07);
+
+  border: 1px solid rgba(240,185,11,0.18);
+
+  border-radius: 8px;
+
+  padding: 15px;
+
+  color: #d1d5db;
+
+  line-height: 1.5;
+
+  margin-bottom: 25px;
+}
+
+
+/* BUTTON */
+
+.back {
+  display: inline-block;
+
+  background: #f0b90b;
+
+  color: #111111;
+
+  text-decoration: none;
+
+  padding: 13px 22px;
+
+  border-radius: 7px;
+
+  font-weight: bold;
+
+  transition: 0.15s ease;
+}
+
+.back:hover {
+  background: #f8d33a;
+}
+
+
+/* ACCOUNT NOTICE */
+
+.notice {
+  margin-top: 25px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid #2b2f36;
+
+  color: #848e9c;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+
+/* MOBILE */
+
+@media(max-width: 600px) {
+
+  .container {
+    margin: 30px auto;
+
+    padding: 15px;
+  }
+
+  .card {
+    padding: 25px 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .fee {
+    font-size: 28px;
+  }
+
+  .brand-name {
+    font-size: 17px;
+  }
+
+  .logo {
+    width: 38px;
+    height: 38px;
+
+    font-size: 25px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+  <div class="header-inner">
+
+    <div class="brand">
+
+      <div class="logo">
+        ₿
+      </div>
+
+      <div>
+
+        <div class="brand-name">
+          BTC Transfer Online Banking
+        </div>
+
+        <div class="brand-subtitle">
+          Account
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="dashboard"
+      onclick="location.href='index.html'">
+
+      Dashboard
+
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<!-- MAIN -->
+
+<div class="container">
+
+  <div class="card">
+
+
+    <div class="transfer-icon">
+      ⇄
+    </div>
+
+
+    <h1>
+      Transfer Unavailable
+    </h1>
+
+
+    <div class="description">
+
+      Your account currently requires a
+      transfer fee before a transfer can
+      be demonstrated.
+
+    </div>
+
+
+    <div class="fee-box">
+
+      <div class="fee-title">
+        Transfer Fee Requirement
+      </div>
+
+      <div class="fee">
+        €1,000.00
+      </div>
+
+    </div>
+
+
+    <div class="status">
+
+      Transfer functionality is currently
+      unavailable.
+
+    </div>
+
+
+    <a
+      class="back"
+      href="index.html">
+
+      ← Return to Dashboard
+
+    </a>
+
+
+    <div class="notice">
+
+      Account — transfer real payment is processed.
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+</body>
+</html>
+```
